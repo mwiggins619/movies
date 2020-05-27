@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+    <style>
+        .personsList{
+        border: gray solid 1px;
+        border-radius: 25px;
+        margin-top: 20px;
+        padding: 20px;
+        color:rgb(121, 112, 144)
+    }
+    .btn-circle {
+      width: 30px;
+      height: 30px;
+      padding: 6px 0px !important;
+      border-radius: 15px !important;
+      margin-top:20px;
+      margin-right: 5px !important;
+      text-align: center !important;
+      font-size: 12px !important;
+      line-height: 1.42857 !important;
+  }
+  #showUsers{
+      margin-top:20px
+  }
+  .movie-poster{
+      margin-top:20px;
+  }
+  .poster{
+      float:left;
+      margin:20px;
+  }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">User Form</h1>
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-horizontal" id="usersForm">
+                    <h3>Movie Search</h3>
+                    <div class="col-md-6">
+                        <div class="form-group form-group-sm">
+                            <label for="Search">Search Term:</label>
+                            <input id="searchTerms" class="form-control form-control-sm" type="text" name="searchTerms">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary float-right" id="searchMovies">Search For Movies</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div id="movieList">
+
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script src="http://sabioapi2.azurewebsites.net/scripts/sabio.js"></script>
+
+    <script src="movies.js"></script>
+
+
+    <!-- All your code goes below here-->
+    <script type="text/javascript">
+        sabio.page.id = null
+        sabio.page.startUp = () => {
+        $('#searchMovies').on('click', sabio.page.searchMovies)
+        $('#movieList').on('mouseenter', '.movie-poster', sabio.page.handlerIn)
+        $('#movieList').on('mouseleave', '.movie-poster', sabio.page.handlerOut)
+        };
+
+</script>
+
+<script type="text/html" id="template">
+    <div class="user personsList" >
+        <div class ="userId">
+            <p>Name: <span class="name"></span></p>
+            <p>User Name: <span class="username"></span></p>
+            <p class="d-none"> DOB:<span class="dob d"></span></p>
+            <p class="d-none"> Password:<span class="password"></span></p>
+            <p>Phone Number: <span class="phone"></span></p>
+            <input type="checkbox" class="admin"> Administrator
+            <div>
+                <button type="button" class="btn btn-success btn-circle edit"><i class="fas fa-edit"></i></button>
+                <button type="button" class="btn btn-danger btn-circle delete"><i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+
+    </div>
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div>
+</div>
+</body>
+
+</html>
